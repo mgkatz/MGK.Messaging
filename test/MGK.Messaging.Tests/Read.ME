@@ -1,0 +1,23 @@
+﻿To make the tests properly it should be added a file named as appsettings.local.json with a content like this:
+
+{
+  "Smtp": {
+    "Client": "<STRING_HERE_GOES_THE_NAME_OF_THE_SMTP_SERVER>",
+    "Port": <INTEGER_HERE_GOES_THE_PORT_OF_THE_SERVER>,
+    "Username": "<STRING_HERE_GOES_THE_EMAIL_ADDRESS_USED_AS_SENDER>",
+    "Password": "STRING_<HERE_GOES_THE_PASSWORD_OF_THE_EMAIL_ADDRESS_OR_THE_KEY_TO_AUTHORIZE_THE_USE_OF_THE_EMAIL_ADDRESS>",
+    "EnableSsl": <BOOLEAN_HERE_GOES_A_FLAG_TO_INDICATE_WHETHER_THE_SMTP_SERVER_USES_SSL_OR_NOT>,
+    "Timeout": <INTEGER_HERE_GOES_THE_TIMEOUT_FOR_WAITING>,
+    "Retries": <INTEGER_HERE_GOES_THE_NUMBER_OF_RETRIES_FOR_SENDING_A_MESSAGE>
+  },
+  "TestOptions": {
+    "MailTo": "<STRING_HERE_GOES_THE_EMAIL_WHERE_WE_WANT_TO_SEND_EMAILS_FOR_THE_TESTINGS>"
+  }
+}
+
+
+If the testing is made Gmail consider this:
+	Additionally go to the "Google Account > Security" (https://myaccount.google.com/security) page and look at the Signing in to "Google > 2-Step Verification setting".
+
+	If it is enabled, then you have to generate a password allowing .NET to bypass the 2-Step Verification. To do this, click on "Signing in to Google > App passwords" (https://myaccount.google.com/apppasswords), select app = Mail, and device = Windows Computer, and finally generate the password. Use the generated password as the access password instead of your standard Gmail password.
+	If it is disabled, then you have to turn on "Less secure app access" (https://myaccount.google.com/lesssecureapps), which is not recommended! So better enable the 2-Step verification.
